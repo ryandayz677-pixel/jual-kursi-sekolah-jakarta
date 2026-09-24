@@ -1,0 +1,7 @@
+_tmp_*
+_shot_*
+*.log
+.DS_Store
+_tmp_edge_profile/
+_tmp_edge_run/
+.vscode/

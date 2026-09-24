@@ -1,0 +1,1656 @@
+/* ==========================================================================
+   Jual Kursi Sekolah Jakarta — Set Meja dan Kursi Zeco
+   1. Design tokens & base
+   ========================================================================== */
+
+:root {
+  /* Brand — blue accent family */
+  --blue-950: #0A1F4C;
+  --blue-900: #12306E;
+  --blue-800: #1B3F98;
+  --blue-700: #1D4ED8;
+  --blue-600: #2563EB;
+  --blue-500: #3B82F6;
+  --blue-300: #93C5FD;
+  --blue-100: #DBEAFE;
+  --blue-50: #EFF6FF;
+
+  /* Neutrals — white dominant */
+  --ink-900: #0F172A;
+  --ink-800: #1E293B;
+  --ink-700: #334155;
+  --ink-600: #475569;
+  --ink-500: #64748B;
+  --ink-400: #94A3B8;
+  --line: #E6ECF5;
+  --line-soft: #F1F5FB;
+  --white: #FFFFFF;
+  --bg-soft: #F7FAFF;
+  --bg-mist: #F4F8FF;
+
+  /* Radius */
+  --r-xs: 10px;
+  --r-sm: 14px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-2xl: 40px;
+  --r-pill: 999px;
+
+  /* Shadows — very soft */
+  --sh-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --sh-sm: 0 6px 18px -10px rgba(15, 23, 42, 0.14);
+  --sh-md: 0 18px 44px -24px rgba(15, 23, 42, 0.24);
+  --sh-lg: 0 34px 70px -34px rgba(15, 23, 42, 0.3);
+  --sh-blue: 0 14px 32px -14px rgba(37, 99, 235, 0.5);
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: clamp(18px, 4vw, 32px);
+  --section-y: clamp(68px, 7.4vw, 124px);
+  --header-h: 76px;
+
+  /* Fonts */
+  --font-heading: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t-fast: 0.18s var(--ease);
+  --t: 0.3s var(--ease);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  margin: 0;
+  background-color: var(--white);
+  color: var(--ink-600);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--ink-900);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.022em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--blue-600);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+a:hover {
+  color: var(--blue-700);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue-500);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}
+
+::selection {
+  background: var(--blue-100);
+  color: var(--blue-900);
+}
+
+/* ==========================================================================
+   Layout helpers
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.section--soft {
+  background: var(--bg-soft);
+}
+
+.section--tight {
+  padding-block: clamp(56px, 6vw, 96px);
+}
+
+.section-head {
+  max-width: 740px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head--start {
+  margin-inline: 0;
+  text-align: left;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3.3vw, 2.625rem);
+}
+
+.section-lead {
+  margin-top: 1.125rem;
+  color: var(--ink-500);
+  font-size: clamp(0.975rem, 1.1vw, 1.0625rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--blue-100);
+  border-radius: var(--r-pill);
+  background: var(--blue-50);
+  color: var(--blue-700);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue-500);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--gutter);
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--r-sm);
+  background: var(--white);
+  box-shadow: var(--sh-md);
+  color: var(--blue-700);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* ==========================================================================
+   2. Buttons, badges & reveal
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform var(--t-fast), box-shadow var(--t), background-color var(--t),
+    border-color var(--t), color var(--t);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn__icon {
+  width: 1.05em;
+  height: 1.05em;
+  flex: none;
+  transition: transform var(--t-fast);
+}
+
+.btn--primary {
+  background: var(--blue-600);
+  color: var(--white);
+  box-shadow: var(--sh-blue);
+}
+
+.btn--primary:hover {
+  background: var(--blue-700);
+  color: var(--white);
+  box-shadow: 0 18px 36px -14px rgba(29, 78, 216, 0.55);
+}
+
+.btn--primary:hover .btn__icon {
+  transform: translateX(3px);
+}
+
+.btn--outline {
+  background: var(--white);
+  border-color: #CFE0FB;
+  color: var(--blue-700);
+  box-shadow: var(--sh-xs);
+}
+
+.btn--outline:hover {
+  border-color: var(--blue-500);
+  color: var(--blue-600);
+  box-shadow: var(--sh-sm);
+}
+
+.btn--light {
+  background: var(--white);
+  color: var(--blue-700);
+  box-shadow: 0 18px 40px -20px rgba(2, 8, 23, 0.5);
+}
+
+.btn--light:hover {
+  color: var(--blue-600);
+}
+
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--white);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.btn--sm {
+  padding: 0.8125rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+.btn--lg {
+  padding: 1.1875rem 2rem;
+  font-size: 1rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6875rem 1.125rem;
+  border: 1px solid var(--blue-100);
+  border-radius: var(--r-pill);
+  background: var(--white);
+  color: var(--blue-800);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: var(--sh-xs);
+  transition: transform var(--t-fast), border-color var(--t), box-shadow var(--t);
+}
+
+.badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue-500);
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--blue-300);
+  box-shadow: var(--sh-sm);
+}
+
+/* Wrapper opsional untuk deretan .badge — komponen tetap tersedia bila
+   ingin menampilkan daftar wilayah layanan atau label serupa. */
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================================
+   3. Header & navigation
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  transition: border-color var(--t), box-shadow var(--t), background-color var(--t);
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 10px 30px -24px rgba(15, 23, 42, 0.4);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--ink-900);
+  flex: none;
+}
+
+/* Logo header — satu gambar, tinggi tetap agar header tidak bergeser,
+   lebar otomatis mengikuti rasio asli logo sehingga tetap proporsional. */
+.brand__logo {
+  display: block;
+  width: auto;
+  height: clamp(30px, 5vw, 42px);
+  max-width: min(100%, 320px);
+  object-fit: contain;
+  object-position: left center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.8vw, 1.65rem);
+}
+
+.nav__link {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.35rem;
+  color: var(--ink-700);
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Teks menu navigasi tanpa garis bawah — baik saat normal, hover, maupun aktif. */
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--blue-700);
+}
+
+.nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--white);
+  cursor: pointer;
+  flex: none;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 4px auto;
+  border-radius: 2px;
+  background: var(--ink-800);
+  transition: transform var(--t), opacity var(--t-fast);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobile-nav {
+  border-top: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: 0 24px 40px -30px rgba(15, 23, 42, 0.45);
+}
+
+.mobile-nav[hidden] {
+  display: none;
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  padding-block: 0.75rem;
+}
+
+.mobile-nav__link {
+  display: block;
+  padding: 0.9rem 0;
+  /* Garis pemisah di bawah teks menu dihapus; warna dibuat transparan
+     agar lebar/tinggi dan posisi teks tetap sama seperti sebelumnya. */
+  border-bottom: 1px solid transparent;
+  color: var(--ink-800);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mobile-nav__link:hover {
+  color: var(--blue-700);
+}
+
+.mobile-nav__cta {
+  width: 100%;
+  margin-block: 1.25rem 0.5rem;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   4. Hero — background image full-screen
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh; /* mobile: konten tetap utuh saat bar browser tampil */
+  overflow: hidden;
+  background: var(--blue-950);
+  isolation: isolate;
+}
+
+/* Lapisan gambar latar full-screen: foto + overlay gelap tipis. */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__bg-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(2, 8, 23, 0.62) 0%, rgba(2, 8, 23, 0.42) 52%, rgba(2, 8, 23, 0.24) 100%),
+    linear-gradient(180deg, rgba(2, 8, 23, 0.28) 0%, rgba(2, 8, 23, 0) 42%, rgba(2, 8, 23, 0.3) 100%);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-block: clamp(72px, 12vh, 132px);
+}
+
+.hero__content {
+  min-width: 0;
+}
+
+/* Eyebrow versi terang supaya tetap terbaca di atas foto. */
+.hero .eyebrow {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.hero .eyebrow::before {
+  background: var(--blue-300);
+}
+
+.hero__title {
+  max-width: 18ch;
+  color: var(--white);
+  font-size: clamp(2.125rem, 4.7vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.hero__title em {
+  font-style: normal;
+  color: var(--blue-300);
+}
+
+.hero__lead {
+  max-width: 56ch;
+  margin-top: 1.375rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.975rem, 1.15vw, 1.0625rem);
+}
+
+/* Bayangan lembut agar teks tetap jelas di bagian foto yang terang. */
+.hero__title,
+.hero__lead {
+  text-shadow: 0 2px 16px rgba(2, 8, 23, 0.45);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 2.25rem;
+}
+
+/* Stat chip opsional (.hero__badge) — komponen tetap tersedia bila ingin
+   menampilkan angka seperti "500+ instansi" di atas foto; lihat README. */
+.hero__badge {
+  position: absolute;
+  left: clamp(-8px, -1vw, 0px);
+  bottom: clamp(18px, 3vw, 34px);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.375rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--sh-md);
+  backdrop-filter: blur(8px);
+}
+
+.hero__badge-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: var(--blue-50);
+  color: var(--blue-600);
+  flex: none;
+}
+
+.hero__badge-mark svg {
+  width: 22px;
+  height: 22px;
+}
+
+.hero__badge strong {
+  display: block;
+  color: var(--ink-900);
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.hero__badge span {
+  color: var(--ink-500);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   5. Keunggulan
+   ========================================================================== */
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.125rem, 2vw, 1.75rem);
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--white);
+  box-shadow: var(--sh-xs);
+  overflow: hidden;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: #D7E5FB;
+  box-shadow: var(--sh-md);
+}
+
+.feature-card__media {
+  aspect-ratio: 16 / 11;
+  margin: 0;
+  background: var(--bg-mist);
+  overflow: hidden;
+}
+
+.feature-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.feature-card:hover .feature-card__media img {
+  transform: scale(1.045);
+}
+
+.feature-card__body {
+  padding: clamp(1.25rem, 1.8vw, 1.625rem);
+}
+
+.feature-card__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.feature-card__text {
+  margin-top: 0.625rem;
+  color: var(--ink-500);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   6. Produk Zeco
+   ========================================================================== */
+
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.2vw, 2rem);
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--white);
+  box-shadow: var(--sh-xs);
+  overflow: hidden;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: #D7E5FB;
+  box-shadow: var(--sh-md);
+}
+
+.product-card__media {
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  background: var(--bg-mist);
+  overflow: hidden;
+}
+
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.product-card:hover .product-card__media img {
+  transform: scale(1.04);
+}
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.25rem, 1.8vw, 1.75rem);
+}
+
+.product-card__name {
+  font-size: 1.1875rem;
+  font-weight: 800;
+}
+
+.product-card__specs {
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+  color: var(--ink-500);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.product-card__specs strong {
+  color: var(--ink-700);
+  font-weight: 700;
+}
+
+.products__more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+/* ==========================================================================
+   7. Showcase interaktif — gambar sticky mengikuti item yang sedang aktif
+   ========================================================================== */
+
+.showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4.4vw, 4.5rem);
+  align-items: start;
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+/* Kolom kiri: satu gambar besar, tetap di tempat selama kolom kanan di-scroll. */
+.showcase__visual {
+  position: sticky;
+  top: calc(var(--header-h) + clamp(20px, 2.6vw, 40px));
+}
+
+.showcase__stage {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  max-height: calc(100vh - var(--header-h) - 120px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2xl);
+  background: var(--bg-mist);
+  box-shadow: var(--sh-md);
+  overflow: hidden;
+}
+
+/* Semua gambar ditumpuk; hanya gambar item aktif yang tampil. Gambar baru
+   langsung terlihat (tanpa delay) sementara gambar lama memudar singkat, jadi
+   pergantian gambar selalu terasa mengikuti kartu yang sedang aktif. */
+.showcase__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.02);
+  will-change: opacity, transform;
+  transition: opacity 0.16s var(--ease), transform 0.45s var(--ease),
+    visibility 0s linear 0.18s;
+}
+
+.showcase__img.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0s, transform 0.45s var(--ease), visibility 0s;
+}
+
+.showcase__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+}
+
+.showcase__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(196px, 30vh, 288px);
+  padding: clamp(1.375rem, 2.2vw, 2rem) clamp(1.375rem, 2.4vw, 2.25rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background-color: var(--white);
+  box-shadow: var(--sh-xs);
+  transition: background-color var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.showcase__item.is-active {
+  border-color: #CFE0FB;
+  background-color: var(--blue-50);
+  box-shadow: var(--sh-md);
+}
+
+/* Aksen tipis di sisi kiri sebagai penanda item aktif. */
+.showcase__item::before {
+  content: "";
+  position: absolute;
+  inset-block: 18%;
+  left: 0;
+  width: 4px;
+  border-radius: 0 var(--r-pill) var(--r-pill) 0;
+  background: var(--blue-600);
+  opacity: 0;
+  transform: scaleY(0.25);
+  transition: opacity var(--t-fast), transform var(--t-fast);
+}
+
+.showcase__item.is-active::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.showcase__inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(0.875rem, 1.6vw, 1.375rem);
+  width: 100%;
+}
+
+.showcase__index {
+  display: grid;
+  place-items: center;
+  width: clamp(2.5rem, 3.2vw, 2.875rem);
+  height: clamp(2.5rem, 3.2vw, 2.875rem);
+  border: 1px solid var(--blue-100);
+  border-radius: var(--r-sm);
+  background-color: var(--blue-50);
+  color: var(--blue-700);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+
+.showcase__item.is-active .showcase__index {
+  border-color: var(--blue-600);
+  background-color: var(--blue-600);
+  color: var(--white);
+  box-shadow: var(--sh-blue);
+}
+
+.showcase__name {
+  font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
+  font-weight: 700;
+  transition: color var(--t-fast);
+}
+
+.showcase__item.is-active .showcase__name {
+  color: var(--blue-900);
+  font-weight: 800;
+}
+
+.showcase__text {
+  margin-top: 0.5rem;
+  color: var(--ink-500);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+/* Gambar per item hanya dipakai pada layout satu kolom (mobile & tablet). */
+.showcase__thumb {
+  display: none;
+  aspect-ratio: 16 / 10;
+  margin: 0 0 1.125rem;
+  border-radius: var(--r-lg);
+  background: var(--bg-mist);
+  overflow: hidden;
+}
+
+.showcase__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   8. Artikel terbaru
+   ========================================================================== */
+
+.articles__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.2vw, 2rem);
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--white);
+  box-shadow: var(--sh-xs);
+  overflow: hidden;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+
+.article-card:hover {
+  transform: translateY(-6px);
+  border-color: #D7E5FB;
+  box-shadow: var(--sh-md);
+}
+
+.article-card__media {
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  background: var(--bg-mist);
+  overflow: hidden;
+}
+
+.article-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.article-card:hover .article-card__media img {
+  transform: scale(1.04);
+}
+
+.article-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.25rem, 1.8vw, 1.75rem);
+}
+
+.article-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.article-card__cat {
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--r-pill);
+  background: var(--blue-50);
+  color: var(--blue-700);
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.article-card__date {
+  color: var(--ink-400);
+}
+
+.article-card__title {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.article-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--blue-600);
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.article-card__link svg {
+  width: 1em;
+  height: 1em;
+  transition: transform var(--t-fast);
+}
+
+.article-card__link:hover svg {
+  transform: translateX(4px);
+}
+
+.articles__more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.25rem, 4vw, 3.25rem);
+}
+
+/* ==========================================================================
+   9. FAQ
+   ========================================================================== */
+
+.faq__list {
+  max-width: 820px;
+  margin: clamp(2.5rem, 4vw, 3.75rem) auto 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--white);
+  box-shadow: var(--sh-xs);
+  overflow: hidden;
+}
+
+.faq-item + .faq-item {
+  border-top: 1px solid var(--line-soft);
+}
+
+.faq-item__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+  padding: clamp(1.125rem, 2vw, 1.5rem) clamp(1.25rem, 2.4vw, 1.875rem);
+  border: 0;
+  background: transparent;
+  color: var(--ink-900);
+  font-family: var(--font-heading);
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--t), color var(--t);
+}
+
+.faq-item__trigger:hover {
+  background: var(--bg-soft);
+  color: var(--blue-700);
+}
+
+.faq-item__icon {
+  position: relative;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue-50);
+  transition: background-color var(--t), transform var(--t);
+}
+
+.faq-item__icon::before,
+.faq-item__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 2px;
+  background: var(--blue-600);
+  transform: translate(-50%, -50%);
+}
+
+.faq-item__icon::before {
+  width: 12px;
+  height: 2px;
+}
+
+.faq-item__icon::after {
+  width: 2px;
+  height: 12px;
+  transition: transform var(--t), opacity var(--t);
+}
+
+.faq-item.is-open .faq-item__icon {
+  background: var(--blue-600);
+}
+
+.faq-item.is-open .faq-item__icon::before,
+.faq-item.is-open .faq-item__icon::after {
+  background: var(--white);
+}
+
+.faq-item.is-open .faq-item__icon::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleY(0);
+}
+
+.faq-item__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.36s var(--ease);
+}
+
+.faq-item__panel p {
+  padding: 0 clamp(1.25rem, 2.4vw, 1.875rem) clamp(1.25rem, 2vw, 1.625rem);
+  color: var(--ink-500);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+/* ==========================================================================
+   10. CTA
+   ========================================================================== */
+
+.cta {
+  position: relative;
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+  background: var(--white);
+}
+
+.cta__inner {
+  position: relative;
+  padding: clamp(2.75rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
+  border-radius: var(--r-2xl);
+  background:
+    radial-gradient(620px 380px at 84% 8%, rgba(59, 130, 246, 0.55), transparent 70%),
+    radial-gradient(520px 320px at 6% 96%, rgba(29, 78, 216, 0.5), transparent 72%),
+    linear-gradient(120deg, #12306E 0%, #1D4ED8 100%);
+  box-shadow: 0 40px 80px -44px rgba(18, 48, 110, 0.75);
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta__title {
+  max-width: 24ch;
+  margin-inline: auto;
+  color: var(--white);
+  font-size: clamp(1.75rem, 3.3vw, 2.625rem);
+}
+
+.cta__text {
+  max-width: 62ch;
+  margin: 1.25rem auto 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.875rem;
+  margin-top: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+/* ==========================================================================
+   11. Footer
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--white);
+  padding-top: clamp(56px, 7vw, 96px);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.2fr;
+  gap: clamp(1.75rem, 3.4vw, 3.25rem);
+}
+
+.footer__col {
+  min-width: 0;
+}
+
+.footer__brand {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.footer__logo {
+  display: block;
+  width: clamp(120px, 11vw, 165px);
+  height: auto;
+  object-fit: contain;
+}
+
+.footer__about {
+  max-width: 38ch;
+  margin-top: 1.375rem;
+  color: var(--ink-500);
+  font-size: 0.9375rem;
+}
+
+.footer__title {
+  color: var(--ink-900);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8125rem;
+  margin-top: 1.375rem;
+}
+
+.footer__link {
+  color: var(--ink-500);
+  font-size: 0.9375rem;
+}
+
+.footer__link:hover {
+  color: var(--blue-600);
+}
+
+.footer__contact li {
+  display: flex;
+  gap: 0.75rem;
+  color: var(--ink-500);
+  font-size: 0.9375rem;
+}
+
+.footer__contact li + li {
+  margin-top: 0.9375rem;
+}
+
+.footer__contact svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.3rem;
+  color: var(--blue-600);
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-400);
+  font-size: 0.875rem;
+}
+
+.footer__bottom a {
+  color: var(--ink-400);
+}
+
+.footer__bottom a:hover {
+  color: var(--blue-600);
+}
+
+/* ==========================================================================
+   12. Katalog & halaman detail produk
+   ========================================================================== */
+
+/* --- Breadcrumb navigasi halaman --- */
+.breadcrumb {
+  margin-bottom: clamp(1.5rem, 2.6vw, 2.25rem);
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-400);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  color: var(--ink-400);
+  font-weight: 500;
+}
+
+.breadcrumb a {
+  color: var(--ink-500);
+}
+
+.breadcrumb a:hover {
+  color: var(--blue-600);
+}
+
+.breadcrumb [aria-current="page"] {
+  color: var(--ink-700);
+}
+
+/* --- Tombol "Lihat Detail" pada kartu produk --- */
+.product-card__actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+/* --- Detail produk: satu kartu besar berisi foto (kiri) dan informasi (kanan) --- */
+.product-detail__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(1.5rem, 3.4vw, 3rem);
+  align-items: center;
+  padding: clamp(1.25rem, 2.6vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2xl);
+  background: var(--white);
+  box-shadow: var(--sh-sm);
+}
+
+/* Foto detail disamakan dengan foto pada kartu produk di beranda: rasio 4:3
+   dengan foto memenuhi seluruh area media (width/height 100% + object-fit:
+   cover), jadi tidak terlihat mengecil ataupun gepeng di dalam bingkai. */
+.product-detail__media {
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  border-radius: var(--r-xl);
+  background: var(--bg-mist);
+  overflow: hidden;
+}
+
+.product-detail__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-detail__body {
+  min-width: 0;
+}
+
+.product-detail__name {
+  font-size: clamp(1.625rem, 2.8vw, 2.25rem);
+}
+
+.product-detail__spec {
+  margin-top: 0.75rem;
+  color: var(--ink-500);
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.75;
+}
+
+/* Label "SPESIFIKASI PRODUK" di atas ringkasan spesifikasi. */
+.product-detail__subtitle {
+  margin-top: clamp(1.5rem, 2.6vw, 2rem);
+  color: var(--ink-900);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.product-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: clamp(1.5rem, 2.6vw, 2rem);
+}
+
+/* ==========================================================================
+   13. Responsive & motion preferences
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+  .features__grid,
+  .products__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem;
+  }
+}
+
+/* Layout dua kolom (desktop): kartu showcase bisa diklik untuk berpindah ke
+   gambar terkait, jadi kursor pointer dipakai sebagai penanda. */
+@media (min-width: 993px) {
+  .showcase__item {
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --header-h: 68px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .hero__title,
+  .hero__lead {
+    max-width: 100%;
+  }
+
+  .articles__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Showcase kebutuhan ruang: satu kolom, tanpa gambar sticky dan tanpa
+     penanda item aktif karena setiap item sudah membawa gambarnya sendiri. */
+  .showcase {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: clamp(2rem, 5vw, 2.75rem);
+  }
+
+  .showcase__visual,
+  .showcase__item::before {
+    display: none;
+  }
+
+  .showcase__list {
+    gap: clamp(1.25rem, 4vw, 1.75rem);
+  }
+
+  .showcase__item {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+  }
+
+  .showcase__item.is-active {
+    border-color: var(--line);
+    background-color: var(--white);
+    box-shadow: var(--sh-xs);
+  }
+
+  .showcase__item.is-active .showcase__index {
+    border-color: var(--blue-100);
+    background-color: var(--blue-50);
+    color: var(--blue-700);
+    box-shadow: none;
+  }
+
+  .showcase__item.is-active .showcase__name {
+    color: var(--ink-900);
+    font-weight: 700;
+  }
+
+  .showcase__thumb {
+    display: block;
+  }
+
+  /* Detail produk: dua kolom (gambar + informasi) menjadi satu kolom. */
+  .product-detail__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .section-head,
+  .section-head--start {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .cta__actions {
+    justify-content: flex-start;
+  }
+
+  .cta__inner {
+    text-align: left;
+  }
+
+  .cta__title,
+  .cta__text {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .features__grid,
+  .products__grid,
+  .articles__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .header__inner {
+    gap: 1rem;
+  }
+
+
+  .hero__badge {
+    left: 0;
+    bottom: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__actions .btn,
+  .cta__actions .btn {
+    width: 100%;
+  }
+
+  .footer__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Tombol di bawah spesifikasi menjadi lebar penuh. */
+  .product-detail__actions .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .btn:hover,
+  .badge:hover,
+  .feature-card:hover,
+  .product-card:hover,
+  .article-card:hover {
+    transform: none;
+  }
+}
+
+/* End of stylesheet */

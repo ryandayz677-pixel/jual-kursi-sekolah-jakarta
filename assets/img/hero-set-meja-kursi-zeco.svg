@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 56 900 628" width="900" height="628" role="img" aria-label="Set meja dan kursi sekolah Zeco di ruang kelas">
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EFF6FF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="heroTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E8F1FE"/>
+    </linearGradient>
+    <linearGradient id="heroFrame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="780" fill="url(#heroBg)"/>
+  <circle cx="748" cy="152" r="214" fill="#DBEAFE" opacity=".55"/>
+  <circle cx="112" cy="654" r="168" fill="#EFF6FF"/>
+
+  <g opacity=".9">
+    <rect x="74" y="112" width="234" height="168" rx="18" fill="#FFFFFF" opacity=".85"/>
+    <rect x="74.5" y="112.5" width="233" height="167" rx="17.5" fill="none" stroke="#DBEAFE" stroke-width="3"/>
+    <path d="M192 116v160M78 196h226" stroke="#DBEAFE" stroke-width="3"/>
+  </g>
+
+  <path d="M0 602h900" stroke="#E6ECF5" stroke-width="2"/>
+  <rect x="0" y="604" width="900" height="176" fill="#F8FBFF"/>
+
+  <ellipse cx="466" cy="648" rx="342" ry="27" fill="#1E3A8A" opacity=".07"/>
+
+  <!-- Meja siswa -->
+  <g>
+    <rect x="196" y="438" width="330" height="13" rx="6.5" fill="#E8F1FE" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="150" y="450" width="422" height="31" rx="14" fill="url(#heroTop)" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="150" y="474" width="422" height="12" rx="6" fill="#E3EDFC"/>
+    <rect x="176" y="486" width="26" height="142" rx="11" fill="url(#heroFrame)"/>
+    <rect x="520" y="486" width="26" height="142" rx="11" fill="url(#heroFrame)"/>
+    <rect x="204" y="560" width="314" height="12" rx="6" fill="#BFD7FA"/>
+    <rect x="168" y="624" width="42" height="10" rx="5" fill="#1E3A8A" opacity=".16"/>
+    <rect x="512" y="624" width="42" height="10" rx="5" fill="#1E3A8A" opacity=".16"/>
+  </g>
+
+  <!-- Perlengkapan di atas meja -->
+  <g>
+    <rect x="230" y="404" width="122" height="31" rx="9" fill="#3B82F6"/>
+    <rect x="249" y="374" width="86" height="30" rx="8" fill="#93C5FD"/>
+    <rect x="392" y="409" width="112" height="26" rx="8" fill="#FFFFFF" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="412" y="418" width="70" height="5" rx="2.5" fill="#CBD5E1"/>
+  </g>
+
+  <!-- Kursi siswa -->
+  <g>
+    <rect x="686" y="410" width="18" height="48" rx="9" fill="#BFD7FA"/>
+    <rect x="622" y="298" width="150" height="122" rx="22" fill="url(#heroTop)" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="652" y="326" width="18" height="66" rx="9" fill="#3B82F6" opacity=".92"/>
+    <rect x="688" y="326" width="18" height="66" rx="9" fill="#3B82F6" opacity=".92"/>
+    <rect x="724" y="326" width="18" height="66" rx="9" fill="#3B82F6" opacity=".92"/>
+    <rect x="608" y="450" width="180" height="31" rx="14" fill="url(#heroTop)" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="608" y="474" width="180" height="12" rx="6" fill="#E3EDFC"/>
+    <rect x="626" y="486" width="20" height="142" rx="9" fill="url(#heroFrame)"/>
+    <rect x="750" y="486" width="20" height="142" rx="9" fill="url(#heroFrame)"/>
+    <rect x="646" y="556" width="104" height="11" rx="5.5" fill="#BFD7FA"/>
+    <rect x="620" y="624" width="32" height="10" rx="5" fill="#1E3A8A" opacity=".16"/>
+    <rect x="744" y="624" width="32" height="10" rx="5" fill="#1E3A8A" opacity=".16"/>
+  </g>
+
+  <g fill="#93C5FD" opacity=".55">
+    <circle cx="804" cy="96" r="6"/>
+    <circle cx="834" cy="126" r="6"/>
+    <circle cx="774" cy="126" r="6"/>
+  </g>
+</svg>
