@@ -764,9 +764,11 @@ body.nav-open {
 }
 
 /* Halaman katalog "Semua Produk Zeco": empat kartu per baris supaya delapan
-   produk tersusun menjadi dua baris di desktop. Grid produk di beranda tetap
-   tiga kolom. Di layar <= 1080px grid menjadi dua kolom (tablet) dan <= 700px
-   menjadi satu kolom (mobile) melalui aturan responsive yang sama. */
+   produk tersusun menjadi dua baris (4 x 2) di desktop. Grid produk di beranda
+   tetap tiga kolom. Nilai desktop di bawah ini tidak boleh tertimpa aturan
+   responsive .products__grid, jadi jumlah kolom varian ini dideklarasikan ulang
+   secara eksplisit pada media query: <= 1080px menjadi dua kolom (tablet) dan
+   <= 700px menjadi satu kolom (mobile). */
 .products__grid--four-col {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1489,7 +1491,8 @@ body.nav-open {
 
 @media (max-width: 1080px) {
   .features__grid,
-  .products__grid {
+  .products__grid,
+  .products__grid--four-col {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1603,6 +1606,7 @@ body.nav-open {
 @media (max-width: 700px) {
   .features__grid,
   .products__grid,
+  .products__grid--four-col,
   .articles__grid {
     grid-template-columns: minmax(0, 1fr);
   }
