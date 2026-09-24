@@ -763,6 +763,14 @@ body.nav-open {
   margin-top: clamp(2.5rem, 4vw, 3.75rem);
 }
 
+/* Halaman katalog "Semua Produk Zeco": empat kartu per baris supaya delapan
+   produk tersusun menjadi dua baris di desktop. Grid produk di beranda tetap
+   tiga kolom. Di layar <= 1080px grid menjadi dua kolom (tablet) dan <= 700px
+   menjadi satu kolom (mobile) melalui aturan responsive yang sama. */
+.products__grid--four-col {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .product-card {
   display: flex;
   flex-direction: column;

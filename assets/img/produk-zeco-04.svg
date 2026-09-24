@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" width="720" height="520" role="img" aria-label="Set meja dan kursi laboratorium Zeco 04">
+  <defs>
+    <linearGradient id="p4Bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4F8FF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="p4Top" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E8F1FE"/>
+    </linearGradient>
+    <linearGradient id="p4Frame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="720" height="520" fill="url(#p4Bg)"/>
+  <circle cx="130" cy="118" r="132" fill="#DBEAFE" opacity=".4"/>
+  <circle cx="628" cy="442" r="118" fill="#EFF6FF"/>
+  <path d="M0 428h720" stroke="#E6ECF5" stroke-width="2"/>
+  <ellipse cx="358" cy="438" rx="250" ry="20" fill="#1E3A8A" opacity=".07"/>
+
+  <g>
+    <rect x="158" y="212" width="272" height="10" rx="5" fill="#E8F1FE" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="168" y="222" width="11" height="46" rx="5.5" fill="#BFD7FA"/>
+    <rect x="409" y="222" width="11" height="46" rx="5.5" fill="#BFD7FA"/>
+    <rect x="206" y="176" width="14" height="18" rx="6" fill="#BFD7FA"/>
+    <path d="M192 194h42l14 18h-70z" fill="#93C5FD"/>
+    <rect x="286" y="196" width="60" height="16" rx="6" fill="#FFFFFF" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="296" y="178" width="8" height="18" rx="4" fill="#3B82F6" opacity=".9"/>
+    <rect x="312" y="172" width="8" height="24" rx="4" fill="#93C5FD" opacity=".9"/>
+    <rect x="328" y="180" width="8" height="16" rx="4" fill="#BFD7FA"/>
+    <rect x="146" y="268" width="284" height="10" rx="5" fill="#E8F1FE" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="128" y="278" width="320" height="24" rx="12" fill="url(#p4Top)" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="128" y="298" width="320" height="10" rx="5" fill="#E3EDFC"/>
+    <rect x="300" y="258" width="126" height="22" rx="10" fill="#FFFFFF" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="312" y="266" width="102" height="9" rx="4.5" fill="#E2E8F0"/>
+    <path d="M334 258v-24h26v18" stroke="#3B82F6" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="148" y="308" width="17" height="120" rx="8" fill="url(#p4Frame)"/>
+    <rect x="412" y="308" width="17" height="120" rx="8" fill="url(#p4Frame)"/>
+    <rect x="165" y="372" width="247" height="10" rx="5" fill="#BFD7FA"/>
+    <rect x="142" y="419" width="31" height="9" rx="4.5" fill="#1E3A8A" opacity=".16"/>
+    <rect x="406" y="419" width="31" height="9" rx="4.5" fill="#1E3A8A" opacity=".16"/>
+  </g>
+
+  <g>
+    <rect x="472" y="232" width="156" height="22" rx="11" fill="url(#p4Top)" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="472" y="248" width="156" height="9" rx="4.5" fill="#E3EDFC"/>
+    <rect x="492" y="212" width="64" height="20" rx="6" fill="#FFFFFF" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="500" y="194" width="9" height="18" rx="4.5" fill="#3B82F6" opacity=".9"/>
+    <rect x="516" y="188" width="9" height="24" rx="4.5" fill="#93C5FD" opacity=".9"/>
+    <rect x="532" y="196" width="9" height="16" rx="4.5" fill="#BFD7FA"/>
+    <rect x="488" y="254" width="15" height="126" rx="7" fill="url(#p4Frame)"/>
+    <rect x="597" y="254" width="15" height="126" rx="7" fill="url(#p4Frame)"/>
+    <rect x="503" y="318" width="94" height="9" rx="4.5" fill="#BFD7FA"/>
+    <rect x="480" y="419" width="28" height="9" rx="4.5" fill="#1E3A8A" opacity=".16"/>
+    <rect x="590" y="419" width="28" height="9" rx="4.5" fill="#1E3A8A" opacity=".16"/>
+  </g>
+
+  <g>
+    <rect x="470" y="300" width="112" height="20" rx="10" fill="url(#p4Top)" stroke="#DCE7F7" stroke-width="2"/>
+    <rect x="482" y="320" width="15" height="108" rx="7" fill="url(#p4Frame)"/>
+    <rect x="555" y="320" width="15" height="108" rx="7" fill="url(#p4Frame)"/>
+    <rect x="497" y="376" width="60" height="9" rx="4.5" fill="#BFD7FA"/>
+    <rect x="475" y="419" width="30" height="9" rx="4.5" fill="#1E3A8A" opacity=".16"/>
+    <rect x="548" y="419" width="30" height="9" rx="4.5" fill="#1E3A8A" opacity=".16"/>
+  </g>
+</svg>
