@@ -200,7 +200,7 @@ button {
   border-radius: var(--r-pill);
   background: var(--blue-50);
   color: var(--blue-700);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -237,7 +237,7 @@ button {
   background: var(--white);
   box-shadow: var(--sh-md);
   color: var(--blue-700);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 700;
 }
 
@@ -257,7 +257,7 @@ button {
   padding: 1rem 1.5rem;
   border: 1px solid transparent;
   border-radius: var(--r-pill);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -349,7 +349,7 @@ button {
   border-radius: var(--r-pill);
   background: var(--white);
   color: var(--blue-800);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1;
@@ -458,7 +458,7 @@ button {
   display: inline-block;
   padding-block: 0.35rem;
   color: var(--ink-700);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -527,7 +527,7 @@ button {
      agar lebar/tinggi dan posisi teks tetap sama seperti sebelumnya. */
   border-bottom: 1px solid transparent;
   color: var(--ink-800);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 600;
 }
@@ -676,7 +676,7 @@ body.nav-open {
 .hero__badge strong {
   display: block;
   color: var(--ink-900);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 1.0625rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -1006,7 +1006,7 @@ body.nav-open {
   border-radius: var(--r-sm);
   background-color: var(--blue-50);
   color: var(--blue-700);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.02em;
@@ -1121,7 +1121,7 @@ body.nav-open {
   border-radius: var(--r-pill);
   background: var(--blue-50);
   color: var(--blue-700);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -1145,7 +1145,7 @@ body.nav-open {
   align-items: center;
   gap: 0.5rem;
   color: var(--blue-600);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 700;
   margin-top: auto;
@@ -1196,7 +1196,7 @@ body.nav-open {
   border: 0;
   background: transparent;
   color: var(--ink-900);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -1501,7 +1501,7 @@ body.nav-open {
   align-items: center;
   gap: 0.5rem;
   color: var(--ink-400);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: 600;
 }
@@ -1799,4 +1799,263 @@ body.nav-open {
 .section-head--start {
   margin-inline: auto;
   text-align: center;}
+/* ==========================================================================
+   14. Halaman Kontak Kami
+   ========================================================================== */
+
+/* Judul & deskripsi halaman selalu rata tengah — termasuk di layar kecil,
+   karena media query <= 860px di atas membuat .section-head rata kiri. */
+.contact-hero .section-head {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contact-hero {
+  padding-block: clamp(84px, 10vw, 148px) clamp(84px, 9vw, 132px);
+}
+
+.contact-hero__title {
+  font-size: clamp(2rem, 4.8vw, 3.25rem);
+  letter-spacing: -0.01em;
+}
+
+.contact-hero__subtitle {
+  margin-top: 1.125rem;
+  color: var(--blue-700);
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.contact-hero__text {
+  max-width: 56ch;
+  margin: 0.875rem auto 0;
+  color: var(--ink-500);
+  font-size: clamp(0.975rem, 1.1vw, 1.0625rem);
+}
+
+/* --- Layout split: kartu besar "Hubungi Kami" (kiri) + peta (kanan) ----- */
+.contact-split__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(1.25rem, 2.8vw, 2.5rem);
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+/* Seluruh informasi kontak digabung dalam satu kartu besar. */
+.contact-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(1.5rem, 3.2vw, 2.75rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2xl);
+  background: var(--white);
+  box-shadow: var(--sh-sm);
+}
+
+.contact-panel__title {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+.contact-panel__text {
+  margin-top: 0.75rem;
+  color: var(--ink-500);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.contact-panel__list {
+  display: grid;
+  gap: 0.875rem;
+  margin-top: clamp(1.5rem, 2.8vw, 2.125rem);
+}
+
+/* Satu baris informasi kontak: ikon sederhana + label + nilainya. */
+.contact-panel__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: clamp(0.875rem, 1.8vw, 1.125rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-mist);
+  transition: border-color var(--t-fast), background-color var(--t-fast);
+}
+
+.contact-panel__item:hover {
+  border-color: #D7E5FB;
+  background: var(--blue-50);
+}
+
+.contact-panel__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--blue-100);
+  border-radius: var(--r-sm);
+  background: var(--white);
+  color: var(--blue-600);
+}
+
+.contact-panel__icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.contact-panel__body {
+  min-width: 0;
+}
+
+.contact-panel__label {
+  color: var(--blue-700);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.contact-panel__value {
+  margin-top: 0.25rem;
+  color: var(--ink-600);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.contact-panel__value a {
+  color: var(--ink-900);
+  font-weight: 500;
+}
+
+.contact-panel__value a:hover {
+  color: var(--blue-600);
+}
+
+/* Tombol "Hubungi via WhatsApp" di dalam kartu informasi — memakai font body
+   (Poppins) mengikuti identitas teks halaman kontak. */
+.contact-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: auto;
+  padding-top: clamp(1.5rem, 2.8vw, 2.125rem);
+}
+
+.contact-panel__actions .btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+/* Kartu peta Google Maps — tinggi sejajar dengan kartu informasi di kiri. */
+.contact-map {
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(320px, 38vw, 460px);
+  padding: clamp(0.75rem, 1.6vw, 1.125rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2xl);
+  background: var(--white);
+  box-shadow: var(--sh-sm);
+}
+
+.contact-map__frame {
+  display: block;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 260px;
+  border: 0;
+  border-radius: var(--r-xl);
+  background: var(--bg-mist);
+}
+
+/* Tablet & mobile: layout split menjadi satu kolom. */
+@media (max-width: 992px) {
+  .contact-split__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-map {
+    min-height: clamp(300px, 46vw, 400px);
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-panel__actions .btn {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   15. Halaman Artikel — layout majalah
+   ========================================================================== */
+
+/* Artikel unggulan memakai lebar penuh, dua artikel pendamping berbagi satu
+   baris di bawahnya. */
+.articles__grid--magazine {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.article-card--feature {
+  grid-column: 1 / -1;
+}
+
+/* Kartu unggulan: gambar di kiri, teks di kanan. Tinggi kartu mengikuti isi
+   teks sehingga gambar tidak menyisakan ruang kosong di sisi kiri. */
+@media (min-width: 861px) {
+  .article-card--feature {
+    flex-direction: row;
+  }
+
+  .article-card--feature .article-card__media {
+    flex: 0 0 52%;
+    aspect-ratio: auto;
+    align-self: stretch;
+  }
+}
+
+/* Ruang teks kartu unggulan lebih lega, judul lebih besar, dan seluruh isi
+   teks berada di tengah secara vertikal. */
+.article-card--feature .article-card__body {
+  justify-content: center;
+  padding: clamp(1.5rem, 2.4vw, 2.375rem);
+}
+
+.article-card--feature .article-card__title {
+  font-size: clamp(1.375rem, 2.3vw, 1.875rem);
+  line-height: 1.28;
+}
+
+.article-card--feature .article-card__link {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+/* Ringkasan singkat artikel — dipakai pada halaman Artikel. */
+.article-card__text {
+  margin-top: 0.875rem;
+  color: var(--ink-500);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.article-card--feature .article-card__text {
+  max-width: 62ch;
+  font-size: 1rem;
+}
+
+/* Mobile: seluruh kartu tersusun satu kolom. Aturan ini perlu ditulis ulang di
+   sini karena selektor majalah berada setelah media query umum di atas. */
+@media (max-width: 700px) {
+  .articles__grid--magazine {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* End of stylesheet */
