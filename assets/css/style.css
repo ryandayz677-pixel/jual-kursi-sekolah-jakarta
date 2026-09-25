@@ -763,14 +763,63 @@ body.nav-open {
   margin-top: clamp(2.5rem, 4vw, 3.75rem);
 }
 
-/* Halaman katalog "Semua Produk Zeco": empat kartu per baris supaya delapan
-   produk tersusun menjadi dua baris (4 x 2) di desktop. Grid produk di beranda
-   tetap tiga kolom. Nilai desktop di bawah ini tidak boleh tertimpa aturan
-   responsive .products__grid, jadi jumlah kolom varian ini dideklarasikan ulang
-   secara eksplisit pada media query: <= 1080px menjadi dua kolom (tablet) dan
-   <= 700px menjadi satu kolom (mobile). */
-.products__grid--four-col {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+/* Halaman katalog "Semua Produk Zeco" memakai dua grid terpisah:
+   1) .products__grid--featured — dua tipe unggulan sebagai kartu besar (dua
+      kolom per baris di desktop);
+   2) .products__grid--compact  — enam tipe lainnya sebagai kartu kecil dengan
+      tiga kolom x dua baris di desktop (mengikuti jumlah kolom .products__grid).
+   Grid produk di beranda tetap tiga kolom. Nilai desktop di bawah ini tidak
+   boleh tertimpa aturan responsive .products__grid, jadi jumlah kolom varian
+   ini dideklarasikan ulang secara eksplisit pada media query: <= 1080px menjadi
+   dua kolom (tablet) dan <= 700px menjadi satu kolom (mobile). */
+.products__grid--featured {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Baris kartu kecil didekatkan dengan baris kartu besar di atasnya. */
+.products__grid--compact {
+  margin-top: clamp(1.25rem, 2.2vw, 1.875rem);
+}
+
+/* --- Kartu besar: gambar lebih dominan dengan teks yang lebih lega --- */
+.product-card--lg .product-card__media {
+  aspect-ratio: 16 / 10;
+}
+
+.product-card--lg .product-card__body {
+  padding: clamp(1.5rem, 2.2vw, 2.25rem);
+}
+
+.product-card--lg .product-card__name {
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+}
+
+.product-card--lg .product-card__specs {
+  font-size: clamp(0.9375rem, 1.05vw, 1rem);
+}
+
+/* --- Kartu kecil: versi ringkas dengan sudut dan tipografi lebih kecil --- */
+.product-card--sm {
+  border-radius: var(--r-lg);
+}
+
+.product-card--sm .product-card__body {
+  padding: clamp(1.125rem, 1.5vw, 1.5rem);
+}
+
+.product-card--sm .product-card__name {
+  font-size: 1.0625rem;
+}
+
+.product-card--sm .product-card__specs {
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+
+.product-card--sm .product-card__actions {
+  padding-top: 1.125rem;
 }
 
 .product-card {
@@ -1560,7 +1609,8 @@ body.nav-open {
 @media (max-width: 1080px) {
   .features__grid,
   .products__grid,
-  .products__grid--four-col,
+  .products__grid--featured,
+  .products__grid--compact,
   .portfolio__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1672,10 +1722,21 @@ body.nav-open {
   }
 }
 
+/* Judul & deskripsi section #produk di beranda selalu rata tengah, baik di
+   desktop maupun mobile. Selektor ID ini sengaja ditaruh setelah media query
+   di atas supaya mengalahkan aturan .section-head { text-align: left } pada
+   <= 860px, tanpa mengubah perataan .section-head di section lain. */
+#produk .section-head,
+#produk .section-head--start {
+  margin-inline: auto;
+  text-align: center;
+}
+
 @media (max-width: 700px) {
   .features__grid,
   .products__grid,
-  .products__grid--four-col,
+  .products__grid--featured,
+  .products__grid--compact,
   .portfolio__grid,
   .articles__grid {
     grid-template-columns: minmax(0, 1fr);
@@ -1734,5 +1795,8 @@ body.nav-open {
     transform: none;
   }
 }
-
+/* Judul halaman katalog produk rata tengah */
+.section-head--start {
+  margin-inline: auto;
+  text-align: center;}
 /* End of stylesheet */
