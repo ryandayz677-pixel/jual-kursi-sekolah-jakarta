@@ -1266,6 +1266,74 @@ body.nav-open {
 }
 
 /* ==========================================================================
+   Portofolio proyek
+   ========================================================================== */
+
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.2vw, 2rem);
+  margin-top: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: var(--white);
+  box-shadow: var(--sh-xs);
+  overflow: hidden;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  border-color: #D7E5FB;
+  box-shadow: var(--sh-md);
+}
+
+.portfolio-card__media {
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  background: var(--bg-mist);
+  overflow: hidden;
+}
+
+.portfolio-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.portfolio-card:hover .portfolio-card__media img {
+  transform: scale(1.04);
+}
+
+.portfolio-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.15rem, 1.7vw, 1.5rem);
+}
+
+.portfolio-card__title {
+  color: var(--ink-900);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.portfolio-card__text {
+  margin-top: 0.65rem;
+  color: var(--ink-500);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
    11. Footer
    ========================================================================== */
 
@@ -1492,7 +1560,8 @@ body.nav-open {
 @media (max-width: 1080px) {
   .features__grid,
   .products__grid,
-  .products__grid--four-col {
+  .products__grid--four-col,
+  .portfolio__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1607,6 +1676,7 @@ body.nav-open {
   .features__grid,
   .products__grid,
   .products__grid--four-col,
+  .portfolio__grid,
   .articles__grid {
     grid-template-columns: minmax(0, 1fr);
   }
