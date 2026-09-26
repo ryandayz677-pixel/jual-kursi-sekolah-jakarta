@@ -2055,7 +2055,28 @@ body.nav-open {
 @media (max-width: 700px) {
   .articles__grid--magazine {
     grid-template-columns: minmax(0, 1fr);
-  }
+  }.section-label {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #1D5DB8;
+  text-transform: uppercase;
 }
+}
+.eyebrow {
+  display: block;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  color: #1D5DB8 !important;
+  text-transform: uppercase;
+}
 /* End of stylesheet */
