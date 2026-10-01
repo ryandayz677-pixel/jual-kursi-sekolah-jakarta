@@ -1273,21 +1273,35 @@ body.nav-open {
    10. CTA
    ========================================================================== */
 
+/* Tanpa padding vertikal: panel biru CTA menyatu penuh mengisi section dari
+   batas atas sampai batas bawah, sehingga tidak ada celah putih di atas
+   maupun di bawah CTA. Padding vertikal di dalam panel (.cta__inner) tetap
+   dipertahankan agar isi CTA tidak menempel ke tepi. */
 .cta {
   position: relative;
-  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+  padding-block: 0;
   background: var(--white);
+}
+
+/* Panel CTA memakai lebar penuh (full-bleed) mengikuti kolom utama:
+   pembungkus .container di dalam section .cta dilepas dari batas max-width dan
+   gutter-nya supaya panel menyentuh tepi layar di semua ukuran. Isi CTA tetap
+   mengikuti gutter container (var(--gutter)) agar sejajar dengan konten
+   section lain di halaman Beranda maupun halaman Produk. */
+.cta > .container {
+  max-width: none;
+  padding-inline: 0;
 }
 
 .cta__inner {
   position: relative;
-  padding: clamp(2.75rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
-  border-radius: var(--r-2xl);
+  width: 100%;
+  max-width: none;
+  padding: clamp(2.75rem, 6vw, 5rem) var(--gutter);
   background:
     radial-gradient(620px 380px at 84% 8%, rgba(59, 130, 246, 0.55), transparent 70%),
     radial-gradient(520px 320px at 6% 96%, rgba(29, 78, 216, 0.5), transparent 72%),
     linear-gradient(120deg, #12306E 0%, #1D4ED8 100%);
-  box-shadow: 0 40px 80px -44px rgba(18, 48, 110, 0.75);
   text-align: center;
   overflow: hidden;
 }
