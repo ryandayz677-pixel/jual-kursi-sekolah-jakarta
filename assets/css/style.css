@@ -180,6 +180,15 @@ button {
   text-align: left;
 }
 
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head--wide {
+  max-width: 820px;
+}
+
 .section-title {
   font-size: clamp(1.75rem, 3.3vw, 2.625rem);
 }
@@ -188,6 +197,18 @@ button {
   margin-top: 1.125rem;
   color: var(--ink-500);
   font-size: clamp(0.975rem, 1.1vw, 1.0625rem);
+}
+
+.section-kicker {
+  display: block;
+  margin-bottom: 0.875rem;
+  color: var(--blue-700);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .eyebrow {
@@ -1723,6 +1744,10 @@ body.nav-open {
     text-align: left;
   }
 
+  .section-head--center {
+    text-align: center;
+  }
+
   .cta__actions {
     justify-content: flex-start;
   }
@@ -1810,10 +1835,6 @@ body.nav-open {
     transform: none;
   }
 }
-/* Judul halaman katalog produk rata tengah */
-.section-head--start {
-  margin-inline: auto;
-  text-align: center;}
 /* ==========================================================================
    14. Halaman Kontak Kami
    ========================================================================== */
