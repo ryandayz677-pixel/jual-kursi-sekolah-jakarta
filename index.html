@@ -17,8 +17,9 @@
   <link rel="icon" href="assets/images/logo-footer.webp" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/img/hero-section.webp" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="image" href="assets/img/hero-section-960.webp" imagesrcset="assets/img/hero-section-640.webp 640w, assets/img/hero-section-960.webp 960w, assets/img/hero-section-1200.webp 1200w" imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/style.min.css">
   <noscript>
     <style>
@@ -80,7 +81,7 @@
     <!-- 2. Hero -->
     <section class="hero" id="beranda">
       <div class="hero__bg">
-        <img class="hero__bg-img" src="assets/img/hero-section.webp" width="1376" height="768" fetchpriority="high" decoding="async" alt="Set meja dan kursi sekolah Zeco di ruang kelas">
+        <img class="hero__bg-img" src="assets/img/hero-section-960.webp" srcset="assets/img/hero-section-640.webp 640w, assets/img/hero-section-960.webp 960w, assets/img/hero-section-1200.webp 1200w" sizes="100vw" width="1200" height="670" fetchpriority="high" decoding="async" alt="Set meja dan kursi sekolah Zeco di ruang kelas">
         <span class="hero__overlay" aria-hidden="true"></span>
       </div>
       <div class="container hero__inner">
@@ -209,7 +210,19 @@
           <div class="showcase__list reveal" role="group" aria-label="Pilihan ruang penggunaan meja dan kursi sekolah">
             <div class="showcase__item is-active" data-showcase-item>
               <figure class="showcase__thumb">
-                <img src="assets/img/Hero-set-meja-kursi-zeco.webp" width="960" height="536" loading="lazy" decoding="async" alt="Set meja dan kursi sekolah Zeco yang dipakai siswa di ruang kelas">
+
+<img
+  src="assets/img/hero-set-meja-kursi-zeco-720.webp"
+  srcset="assets/img/hero-set-meja-kursi-zeco-480.webp 480w,
+          assets/img/hero-set-meja-kursi-zeco-720.webp 720w,
+          assets/img/hero-set-meja-kursi-zeco-960.webp 960w"
+  sizes="(max-width: 700px) 88vw, 48vw"
+  width="960"
+  height="536"
+  loading="lazy"
+  decoding="async"
+  alt="Set meja dan kursi sekolah Zeco yang dipakai siswa di ruang kelas">
+
               </figure>
               <div class="showcase__inner">
                 <span class="showcase__index" aria-hidden="true">01</span>

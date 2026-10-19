@@ -14,9 +14,20 @@
      --------------------------------------------------------------------- */
   var header = document.getElementById('siteHeader');
 
+  var headerTicking = false;
+  var headerScrolled = null;
+
   function syncHeader() {
-    if (!header) return;
-    header.classList.toggle('is-scrolled', window.scrollY > 8);
+    if (!header || headerTicking) return;
+    headerTicking = true;
+    window.requestAnimationFrame(function () {
+      var shouldBeScrolled = window.scrollY > 8;
+      if (shouldBeScrolled !== headerScrolled) {
+        header.classList.toggle('is-scrolled', shouldBeScrolled);
+        headerScrolled = shouldBeScrolled;
+      }
+      headerTicking = false;
+    });
   }
 
   syncHeader();
