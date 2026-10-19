@@ -9,6 +9,14 @@
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var DESKTOP_QUERY = '(min-width: 993px)';
 
+  /* Jalankan pembacaan layout setelah frame pertama dilukis, supaya tidak
+     memicu forced reflow saat load. */
+  function afterPaint(fn) {
+    window.requestAnimationFrame(function () {
+      window.setTimeout(fn, 0);
+    });
+  }
+
   /* ---------------------------------------------------------------------
      Sticky header shadow
      --------------------------------------------------------------------- */
@@ -555,7 +563,7 @@
     /* State awal, penyesuaian saat ukuran viewport berubah, dan pramuat gambar
        lain supaya pergantian gambar terasa instan. */
     setShowcaseClickable(showcaseDesktop.matches);
-    syncShowcase();
+    afterPaint(syncShowcase);
 
     var showcaseResizing = false;
 
@@ -651,13 +659,20 @@
   });
 
   if (faqItems.length) {
-    openFaq(faqItems[0]);
+    afterPaint(function () {
+      openFaq(faqItems[0]);
+    });
 
     window.addEventListener('resize', function () {
+      var heights = [];
       faqItems.forEach(function (item) {
-        if (!item.classList.contains('is-open')) return;
+        var panel = item.classList.contains('is-open') ? item.querySelector('.faq-item__panel') : null;
+        heights.push(panel ? panel.scrollHeight : -1);
+      });
+      faqItems.forEach(function (item, i) {
+        if (heights[i] < 0) return;
         var panel = item.querySelector('.faq-item__panel');
-        if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+        if (panel) panel.style.maxHeight = heights[i] + 'px';
       });
     });
   }
