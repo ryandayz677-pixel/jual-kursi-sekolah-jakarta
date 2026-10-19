@@ -2495,3 +2495,24 @@ body.nav-open {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+
+/* Accessibility and responsive performance refinements */
+.footer__about,
+.footer__link,
+.footer__contact li { color: #475569; }
+.footer__bottom,
+.footer__bottom a { color: #475569; }
+.footer__bottom a:hover,
+.footer__link:hover { color: #1d4ed8; }
+
+img { max-width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

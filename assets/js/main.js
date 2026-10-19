@@ -185,8 +185,7 @@
       showcaseItems.forEach(function (item, position) {
         var isActive = position === index;
         item.classList.toggle('is-active', isActive);
-        if (isActive) item.setAttribute('aria-current', 'true');
-        else item.removeAttribute('aria-current');
+        item.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
 
       showcaseImages.forEach(function (image, position) {
@@ -497,9 +496,11 @@
         if (clickable) {
           item.setAttribute('role', 'button');
           item.setAttribute('tabindex', '0');
+          item.setAttribute('aria-pressed', item.classList.contains('is-active') ? 'true' : 'false');
         } else {
           item.removeAttribute('role');
           item.removeAttribute('tabindex');
+          item.removeAttribute('aria-pressed');
         }
       });
     }

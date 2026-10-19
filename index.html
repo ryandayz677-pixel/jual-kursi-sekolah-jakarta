@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/img/Hero-set-meja-kursi-zeco.webp">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preload" as="image" href="assets/img/hero-section.webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/style.min.css">
   <noscript>
     <style>
       /* Tanpa JavaScript, seluruh konten harus tetap terlihat. */
@@ -35,7 +35,7 @@
   </noscript>
 </head>
 <body>
-  <a class="skip-link" href="https://wa.me/+628113301819" target="_blank" rel="noopener">Lewati ke konten utama</a>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
 
   <!-- 1. Header -->
   <header class="site-header" id="siteHeader">
@@ -52,7 +52,7 @@
           <li><a class="nav__link" href="artikel.html">Artikel</a></li>
           <li><a class="nav__link" href="kontak.html">Kontak Kami</a></li>
         </ul>
-        <a class="btn btn--primary btn--sm" href="https://wa.me/+628113301819" target="_blank" rel="noopener">Konsultasikan Sekarang</a>
+        <a class="btn btn--primary btn--sm" href="https://wa.me/628113301819" target="_blank" rel="noopener">Konsultasikan Sekarang</a>
       </nav>
 
       <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Buka menu">
@@ -76,11 +76,11 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- 2. Hero -->
     <section class="hero" id="beranda">
       <div class="hero__bg">
-        <img class="hero__bg-img" src="assets/img/hero-section.webp" width="1600" height="1375" fetchpriority="high" decoding="async" alt="Set meja dan kursi sekolah Zeco di ruang kelas">
+        <img class="hero__bg-img" src="assets/img/hero-section.webp" width="1376" height="768" fetchpriority="high" decoding="async" alt="Set meja dan kursi sekolah Zeco di ruang kelas">
         <span class="hero__overlay" aria-hidden="true"></span>
       </div>
       <div class="container hero__inner">
@@ -206,8 +206,8 @@
             </div>
           </div>
 
-          <ol class="showcase__list reveal">
-            <li class="showcase__item is-active" data-showcase-item aria-current="true">
+          <div class="showcase__list reveal" role="group" aria-label="Pilihan ruang penggunaan meja dan kursi sekolah">
+            <div class="showcase__item is-active" data-showcase-item>
               <figure class="showcase__thumb">
                 <img src="assets/img/Hero-set-meja-kursi-zeco.webp" width="1599" height="892" loading="lazy" decoding="async" alt="Set meja dan kursi sekolah Zeco yang dipakai siswa di ruang kelas">
               </figure>
@@ -221,9 +221,9 @@
                   </p>
                 </div>
               </div>
-            </li>
+            </div>
 
-            <li class="showcase__item" data-showcase-item>
+            <div class="showcase__item" data-showcase-item>
               <figure class="showcase__thumb">
                 <img src="assets/img/zeco_rizen.webp" width="720" height="520" loading="lazy" decoding="async" alt="Set meja dan kursi ruang komputer Zeco dengan monitor, keyboard, dan rak CPU">
               </figure>
@@ -237,9 +237,9 @@
                   </p>
                 </div>
               </div>
-            </li>
+            </div>
 
-            <li class="showcase__item" data-showcase-item>
+            <div class="showcase__item" data-showcase-item>
               <figure class="showcase__thumb">
                 <img src="assets/img/Desain-fungsional.webp" width="1516" height="1037" loading="lazy" decoding="async" alt="Set meja dan kursi Zeco dengan rak buku di ruang perpustakaan sekolah">
               </figure>
@@ -253,9 +253,9 @@
                   </p>
                 </div>
               </div>
-            </li>
+            </div>
 
-            <li class="showcase__item" data-showcase-item>
+            <div class="showcase__item" data-showcase-item>
               <figure class="showcase__thumb">
                 <img src="assets/img/konsultasi-produk.webp" width="1518" height="1036" loading="lazy" decoding="async" alt="Konsultasi penataan set meja dan kursi untuk ruang pelatihan sekolah">
               </figure>
@@ -268,8 +268,8 @@
                   </p>
                 </div>
               </div>
-            </li>
-          </ol>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -533,7 +533,7 @@
             akan membantu menyusun rekomendasi set meja dan kursi Zeco beserta penawaran resminya.
           </p>
           <div class="cta__actions">
-            <a class="btn btn--light btn--lg" href="https://wa.me/628113301819" target="_blank" rel="noopener" target="_blank" rel="noopener">
+            <a class="btn btn--light btn--lg" href="https://wa.me/628113301819" target="_blank" rel="noopener noreferrer">
               Konsultasikan Kebutuhan Anda
               <svg class="btn__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
