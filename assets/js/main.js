@@ -165,8 +165,47 @@
       return window.performance && window.performance.now ? window.performance.now() : Date.now();
     }
 
+    /* Geometri kartu disimpan di cache dan hanya diukur ulang dari callback
+       ResizeObserver (dijalankan browser SETELAH layout selesai). Dengan begitu
+       scroll/animasi tidak lagi membaca layout langsung dan tidak memicu
+       forced reflow. Koordinat memakai offsetTop sehingga tidak terpengaruh
+       transform animasi .reveal. */
+    var geo = { docHeight: 0, tops: [], heights: [], listTop: 0, listBottom: 0, ready: false };
+
+    function documentTop(el) {
+      var top = 0;
+      while (el) {
+        top += el.offsetTop;
+        el = el.offsetParent;
+      }
+      return top;
+    }
+
+    function measureGeometry() {
+      geo.docHeight = rootEl.scrollHeight;
+      geo.tops = [];
+      geo.heights = [];
+      for (var i = 0; i < showcaseItems.length; i += 1) {
+        geo.tops.push(documentTop(showcaseItems[i]));
+        geo.heights.push(showcaseItems[i].offsetHeight);
+      }
+      geo.listTop = documentTop(showcaseList);
+      geo.listBottom = geo.listTop + showcaseList.offsetHeight;
+      geo.ready = true;
+      if (showcaseVisible) syncShowcase();
+    }
+
+    if ('ResizeObserver' in window) {
+      var geoObserver = new ResizeObserver(measureGeometry);
+      geoObserver.observe(document.body);
+      geoObserver.observe(showcaseList);
+    } else {
+      window.addEventListener('load', measureGeometry);
+      window.addEventListener('resize', measureGeometry);
+    }
+
     function maxScrollTop() {
-      return Math.max(0, rootEl.scrollHeight - window.innerHeight);
+      return Math.max(0, geo.docHeight - window.innerHeight);
     }
 
     function clampScroll(value) {
@@ -175,19 +214,20 @@
 
     /* Posisi scroll yang menempatkan tengah kartu tepat di tengah viewport. */
     function centerScrollTop(item) {
-      var rect = item.getBoundingClientRect();
-      return clampScroll(window.scrollY + rect.top + rect.height / 2 - window.innerHeight / 2);
+      var index = showcaseItems.indexOf(item);
+      if (index < 0 || !geo.ready) return window.scrollY;
+      return clampScroll(geo.tops[index] + geo.heights[index] / 2 - window.innerHeight / 2);
     }
 
     /* Indeks kartu yang tengahnya paling dekat dengan tengah viewport. */
     function nearestIndex() {
-      var center = window.innerHeight / 2;
+      if (!geo.ready) return -1;
+      var center = window.scrollY + window.innerHeight / 2;
       var best = -1;
       var bestDistance = Infinity;
 
       for (var i = 0; i < showcaseItems.length; i += 1) {
-        var rect = showcaseItems[i].getBoundingClientRect();
-        var distance = Math.abs(rect.top + rect.height / 2 - center);
+        var distance = Math.abs(geo.tops[i] + geo.heights[i] / 2 - center);
         if (distance < bestDistance) {
           bestDistance = distance;
           best = i;
@@ -212,19 +252,30 @@
       });
     }
 
+    /* Status terlihat disimpan lewat IntersectionObserver, jadi tidak perlu
+       membaca getBoundingClientRect() (pemicu forced reflow) di setiap sync. */
+    var showcaseVisible = !('IntersectionObserver' in window);
+
     function showcaseInView() {
-      var rect = showcase.getBoundingClientRect();
-      return rect.bottom > 0 && rect.top < window.innerHeight;
+      return showcaseVisible;
+    }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          showcaseVisible = entry.isIntersecting;
+          if (showcaseVisible) syncShowcase();
+        });
+      }).observe(showcase);
     }
 
     /* Section "dipegang" hanya saat garis tengah viewport berada di daftar
        kartu. Di luar itu, termasuk saat user ada di section lain, scroll
        berjalan normal dan tidak pernah ditahan. */
     function isEngaged() {
-      if (!showcaseList) return false;
-      var rect = showcaseList.getBoundingClientRect();
-      var center = window.innerHeight / 2;
-      return rect.top <= center && rect.bottom >= center;
+      if (!showcaseList || !geo.ready) return false;
+      var center = window.scrollY + window.innerHeight / 2;
+      return geo.listTop <= center && geo.listBottom >= center;
     }
 
     /* Highlight & gambar selalu mengikuti posisi scroll, jadi tidak ada nomor
@@ -563,7 +614,7 @@
     /* State awal, penyesuaian saat ukuran viewport berubah, dan pramuat gambar
        lain supaya pergantian gambar terasa instan. */
     setShowcaseClickable(showcaseDesktop.matches);
-    afterPaint(syncShowcase);
+    if (!('IntersectionObserver' in window)) afterPaint(syncShowcase);
 
     var showcaseResizing = false;
 
@@ -636,7 +687,6 @@
     var trigger = item.querySelector('.faq-item__trigger');
     item.classList.remove('is-open');
     if (trigger) trigger.setAttribute('aria-expanded', 'false');
-    if (panel) panel.style.maxHeight = '0px';
   }
 
   function openFaq(item) {
@@ -644,7 +694,6 @@
     var trigger = item.querySelector('.faq-item__trigger');
     item.classList.add('is-open');
     if (trigger) trigger.setAttribute('aria-expanded', 'true');
-    if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
   }
 
   faqItems.forEach(function (item) {
@@ -661,19 +710,6 @@
   if (faqItems.length) {
     afterPaint(function () {
       openFaq(faqItems[0]);
-    });
-
-    window.addEventListener('resize', function () {
-      var heights = [];
-      faqItems.forEach(function (item) {
-        var panel = item.classList.contains('is-open') ? item.querySelector('.faq-item__panel') : null;
-        heights.push(panel ? panel.scrollHeight : -1);
-      });
-      faqItems.forEach(function (item, i) {
-        if (heights[i] < 0) return;
-        var panel = item.querySelector('.faq-item__panel');
-        if (panel) panel.style.maxHeight = heights[i] + 'px';
-      });
     });
   }
 

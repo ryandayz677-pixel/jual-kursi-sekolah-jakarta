@@ -5,3 +5,5 @@ _shot_*
 _tmp_edge_profile/
 _tmp_edge_run/
 .vscode/
+
+assets/img/*.png

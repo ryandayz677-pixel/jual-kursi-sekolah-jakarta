@@ -1278,13 +1278,10 @@ body.nav-open {
   transform: translate(-50%, -50%) scaleY(0);
 }
 
-.faq-item__panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.36s var(--ease);
-}
+.faq-item__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.36s var(--ease);}
+.faq-item.is-open .faq-item__panel{grid-template-rows:1fr;}
 
-.faq-item__panel p {
+.faq-item__panel p {min-height:0;overflow:hidden;
   padding: 0 clamp(1.25rem, 2.4vw, 1.875rem) clamp(1.25rem, 2vw, 1.625rem);
   color: var(--ink-500);
   font-size: 0.9375rem;
