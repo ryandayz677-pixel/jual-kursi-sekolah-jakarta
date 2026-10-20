@@ -711,11 +711,7 @@
     });
   });
 
-  if (faqItems.length) {
-    afterPaint(function () {
-      openFaq(faqItems[0]);
-    });
-  }
+  
 
   /* ---------------------------------------------------------------------
      Current year in the footer
