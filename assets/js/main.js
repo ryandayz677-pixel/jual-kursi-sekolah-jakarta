@@ -637,9 +637,13 @@
           entries.forEach(function (entry) {
             if (!entry.isIntersecting) return;
 
-            showcaseImages.forEach(function (image) {
-              image.loading = 'eager';
-            });
+            /* Di mobile gambar showcase disembunyikan (display:none); memaksanya eager hanya
+               membuang bandwidth. Cukup pada layout dua kolom (desktop). */
+            if (showcaseDesktop.matches) {
+              showcaseImages.forEach(function (image) {
+                image.loading = 'eager';
+              });
+            }
 
             observer.disconnect();
           });

@@ -3,6 +3,31 @@
    1. Design tokens & base
    ========================================================================== */
 
+/* Fallback bermetrik sama dengan Poppins (dikalibrasi dengan mengukur lebar teks
+   situs ini: Poppins vs Arial) supaya teks tidak berubah lebar/baris saat Poppins selesai dimuat
+   (mengurangi CLS pada hero). Hanya dipakai selama font web belum tersedia. */
+@font-face {
+  font-family: "Poppins Fallback";
+  font-style: normal;
+  font-weight: 300 500;
+  src: local("Arial"), local("Liberation Sans"), local("LiberationSans"), local("Helvetica");
+  size-adjust: 112.7%;
+  ascent-override: 93.17%;
+  descent-override: 31.06%;
+  line-gap-override: 8.87%;
+}
+
+@font-face {
+  font-family: "Poppins Fallback";
+  font-style: normal;
+  font-weight: 600 800;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("LiberationSans-Bold"), local("Helvetica Bold");
+  size-adjust: 108.8%;
+  ascent-override: 96.51%;
+  descent-override: 32.17%;
+  line-gap-override: 9.19%;
+}
+
 :root {
   /* Brand — blue accent family */
   --blue-950: #0A1F4C;
@@ -52,7 +77,7 @@
 
   /* Fonts */
   --font-heading: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-body: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: "Poppins", "Poppins Fallback", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   /* Motion */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -483,6 +508,9 @@ button {
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  /* Tanpa animasi warna: tautan aktif diganti lewat IntersectionObserver saat load
+     dan animasi `color` tidak bisa di-composite (peringatan PageSpeed). */
+  transition: none;
 }
 
 /* Teks menu navigasi tanpa garis bawah — baik saat normal, hover, maupun aktif. */
