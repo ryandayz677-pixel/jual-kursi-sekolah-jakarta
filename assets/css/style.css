@@ -2565,3 +2565,27 @@ img { max-width: 100%; }
 
 /* Product table header: soft blue to match the supplied reference */
 .product-spec-table thead th{background:#edf4ff!important;color:#172544!important;border-bottom:1px solid #d8e5fb!important}
+
+
+/* Revisi scroll produk Zeco 01–08: foto mengikuti scroll tabel di desktop. */
+@media (min-width: 901px) {
+  .product-detail__grid { align-items: start !important; }
+  .product-detail__media {
+    position: sticky !important;
+    top: calc(var(--header-h, 76px) + 20px) !important;
+    align-self: start !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 3;
+  }
+  .product-detail__media img {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 3;
+    object-fit: contain !important;
+  }
+}
+@media (max-width: 900px) {
+  .product-detail__media { position: static !important; top: auto !important; }
+}
