@@ -273,7 +273,7 @@
        kartu. Di luar itu, termasuk saat user ada di section lain, scroll
        berjalan normal dan tidak pernah ditahan. */
     function isEngaged() {
-      if (!showcaseList || !geo.ready) return false;
+      if (!showcaseDesktop.matches || !showcaseList || !geo.ready) return false;
       var center = window.scrollY + window.innerHeight / 2;
       return geo.listTop <= center && geo.listBottom >= center;
     }
