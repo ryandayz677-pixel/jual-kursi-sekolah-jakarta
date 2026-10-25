@@ -150,3 +150,42 @@
   }
 }
 
+
+
+/* Header CTA sizing: match the supplied desktop reference on every page. */
+.site-header .nav > a.header-cta {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: 0 0 238px !important;
+  width: 238px !important;
+  min-width: 238px !important;
+  max-width: 238px !important;
+  height: 46px !important;
+  min-height: 46px !important;
+  max-height: 46px !important;
+  padding: 0 14px !important;
+  font-size: 14px !important;
+  line-height: 1.15 !important;
+  white-space: nowrap;
+}
+
+/* The mobile-menu CTA keeps the same button height and width where it fits. */
+.site-header .mobile-nav a.header-cta {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: min(238px, 100%) !important;
+  min-width: 0 !important;
+  max-width: 238px !important;
+  height: 46px !important;
+  min-height: 46px !important;
+  max-height: 46px !important;
+  padding: 0 14px !important;
+  margin: 1.25rem auto 0.5rem !important;
+  font-size: 14px !important;
+  line-height: 1.15 !important;
+  white-space: nowrap;
+}
